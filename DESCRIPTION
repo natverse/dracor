@@ -1,12 +1,16 @@
 Package: dracor
 Type: Package
-Title: What the Package Does in One 'Title Case' Line
-Version: 1.0
+Title: Decode Draco Format 3D Mesh data
+Version: 0.1
 Date: 2020-07-16
-Author: Your Name
-Maintainer: Your Name <your@email.com>
-Description: One paragraph description of what the
-      package does as one or more full sentences.
+Authors@R: 
+    person("Gregory", "Jefferis", 
+    email="jefferis@gmail.com", 
+    role = c("aut", "cre"), 
+    comment = c(ORCID = "0000-0002-0587-9355"))
+Description: Decodes meshes encoded by Draco
 License: GPL (>= 2)
 Imports: Rcpp (>= 1.0.5)
 LinkingTo: Rcpp
+Url: https://github.com/google/draco
+RoxygenNote: 7.1.0
