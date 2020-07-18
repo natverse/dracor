@@ -29,9 +29,4 @@ test_that("decoding works", {
 test_that("draco round trip works", {
   origfile="testdata/mesh.draco"
   rtply="testdata/mesh.ply.draco"
-  rtobj="testdata/mesh.ply.draco"
-
-  expect_is(dracodecode(
-    readBin(origfile, what=raw(), n=file.info(origfile)$size)),
-    'list')
 })
