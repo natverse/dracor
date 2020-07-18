@@ -63,6 +63,7 @@ List dracodecode(RawVector data) {
   std::unique_ptr<draco::PointCloud> pc;
   draco::Mesh *mesh = nullptr;
   auto type_statusor = draco::Decoder::GetEncodedGeometryType(&buffer);
+
   if (!type_statusor.ok()) {
     return List();
   }
@@ -86,11 +87,52 @@ List dracodecode(RawVector data) {
       return List();
     }
     pc = std::move(statusor).value();
+  } else {
+    return List();
   }
 
   if (pc == nullptr) {
     // printf("Failed to decode the input file.\n");
     return List();
   }
-  return List("success");
+
+  // get vertex positions
+  const draco::PointAttribute *const att =
+    pc->GetNamedAttribute(draco::GeometryAttribute::POSITION);
+  if (att == nullptr || att->size() == 0) {
+    return List();  // Position attribute must be valid.
+  }
+  std::array<float, 3> vertex;
+  const uint32_t nverts = static_cast<uint32_t>(att->size());
+
+  NumericMatrix verts(nverts, 3);
+  // second loop counter
+  uint32_t ii=0;
+  for (draco::AttributeValueIndex i(0); i < nverts; ++i) {
+    if (!att->ConvertValue<float, 3>(i, &vertex[0])) {
+      return List();
+    }
+    for (int j = 0; j < 3; j++) {
+      verts(ii, j)=vertex[j];
+    }
+    ++ii;
+  }
+  List ret = List::create(Named("verts")=verts);
+
+  if(geom_type == draco::TRIANGULAR_MESH) {
+    IntegerMatrix faceindices(mesh->num_faces(), 3);
+    // get indices for faces
+    ii=0;
+    for (draco::FaceIndex i(0); i < mesh->num_faces(); ++i) {
+      for (int j = 0; j < 3; ++j) {
+        draco::PointIndex vert_index = mesh->face(i)[j];
+        faceindices(ii,j)=att->mapped_index(vert_index).value() + 1;
+      }
+      ++ii;
+    }
+
+    ret["faceindices"]=faceindices;
+  }
+
+  return ret;
 }
