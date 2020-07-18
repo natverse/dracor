@@ -2,11 +2,6 @@
 # Generator token: 10BE3573-1514-4C36-9D1C-5A225CD40393
 
 #' @export
-dracodecodefile <- function(x) {
-    .Call(`_dracor_dracodecodefile`, x)
-}
-
-#' @export
 dracodecode <- function(data) {
     .Call(`_dracor_dracodecode`, data)
 }
