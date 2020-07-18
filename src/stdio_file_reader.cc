@@ -5,6 +5,7 @@
 #include <cstdio>
 #include <string>
 #include <vector>
+#include <R.h>
 
 #if defined(_WIN32)
 #include <fcntl.h>
@@ -17,7 +18,7 @@ namespace draco {
 
 #define FILEREADER_LOG_ERROR(error_string)                             \
   do {                                                                 \
-    fprintf(stderr, "%s:%d (%s): %s.\n", __FILE__, __LINE__, __func__, \
+    REprintf( "%s:%d (%s): %s.\n", __FILE__, __LINE__, __func__, \
             error_string);                                             \
   } while (false)
 

@@ -16,6 +16,7 @@
 #define DRACO_COMPRESSION_POINT_CLOUD_ALGORITHMS_FLOAT_POINTS_TREE_DECODER_H_
 
 #include <memory>
+#include <R.h>
 
 #include "draco/compression/config/compression_shared.h"
 #include "draco/compression/point_cloud/algorithms/point_cloud_compression_method.h"
@@ -120,7 +121,7 @@ bool FloatPointsTreeDecoder::DecodePointCloud(DecoderBuffer *buffer,
         return false;
       }
     } else {  // Unsupported method.
-      fprintf(stderr, "Method not supported. \n");
+      REprintf( "Method not supported. \n");
       return false;
     }
   } else if (decoded_version == 2) {  // Version 2 only uses KDTREE method.
@@ -128,7 +129,7 @@ bool FloatPointsTreeDecoder::DecodePointCloud(DecoderBuffer *buffer,
       return false;
     }
   } else {  // Unsupported version.
-    fprintf(stderr, "Version not supported. \n");
+    REprintf( "Version not supported. \n");
     return false;
   }
 

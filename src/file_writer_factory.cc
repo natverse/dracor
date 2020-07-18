@@ -1,13 +1,14 @@
 #include "draco/io/file_writer_factory.h"
 
 #include <vector>
+#include <R.h>
 
 namespace draco {
 namespace {
 
 #define FILEWRITER_LOG_ERROR(error_string)                             \
   do {                                                                 \
-    fprintf(stderr, "%s:%d (%s): %s.\n", __FILE__, __LINE__, __func__, \
+    REprintf( "%s:%d (%s): %s.\n", __FILE__, __LINE__, __func__, \
             error_string);                                             \
   } while (false)
 

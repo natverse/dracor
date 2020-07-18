@@ -15,17 +15,18 @@
 #include "draco/mesh/mesh_are_equivalent.h"
 
 #include <algorithm>
+#include <R.h>
 
 namespace draco {
 
 void MeshAreEquivalent::PrintPosition(const Mesh &mesh, FaceIndex f,
                                       int32_t c) {
-  fprintf(stderr, "Printing position for (%i,%i)\n", f.value(), c);
+  REprintf( "Printing position for (%i,%i)\n", f.value(), c);
   const auto pos_att = mesh.GetNamedAttribute(GeometryAttribute::POSITION);
   const PointIndex ver_index = mesh.face(f)[c];
   const AttributeValueIndex pos_index = pos_att->mapped_index(ver_index);
   const auto pos = pos_att->GetValue<float, 3>(pos_index);
-  fprintf(stderr, "Position (%f,%f,%f)\n", pos[0], pos[1], pos[2]);
+  REprintf( "Position (%f,%f,%f)\n", pos[0], pos[1], pos[2]);
 }
 
 Vector3f MeshAreEquivalent::GetPosition(const Mesh &mesh, FaceIndex f,
