@@ -1,5 +1,6 @@
 #' @keywords internal
 #' @useDynLib dracor, .registration=TRUE
+#' @import Rcpp
 "_PACKAGE"
 
 # The following block is used by usethis to automatically manage

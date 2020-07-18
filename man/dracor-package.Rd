@@ -8,7 +8,7 @@
 \description{
 Decodes meshes and point cloud data encoded by Google's Draco mesh
     compression library. Note that this only designed for mesh decoding and not
-    intended as a full scale wrapping of the
+    intended as a full scale wrapping of the Draco library.
 }
 \author{
 \strong{Maintainer}: Gregory Jefferis \email{jefferis@gmail.com} (\href{https://orcid.org/0000-0002-0587-9355}{ORCID})

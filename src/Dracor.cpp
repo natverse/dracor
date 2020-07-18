@@ -20,7 +20,6 @@ List dracodecodefile(CharacterVector x) {
   return List("not implemented");
 }
 
-//' @export
 // [[Rcpp::export]]
 List dracodecode(RawVector data) {
   draco::DecoderBuffer buffer;
