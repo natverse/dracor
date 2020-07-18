@@ -5,19 +5,32 @@
 
 using namespace Rcpp;
 
-// rcpp_hello_world
-List rcpp_hello_world();
-RcppExport SEXP _dracor_rcpp_hello_world() {
+// dracodecodefile
+List dracodecodefile(CharacterVector x);
+RcppExport SEXP _dracor_dracodecodefile(SEXP xSEXP) {
 BEGIN_RCPP
     Rcpp::RObject rcpp_result_gen;
     Rcpp::RNGScope rcpp_rngScope_gen;
-    rcpp_result_gen = Rcpp::wrap(rcpp_hello_world());
+    Rcpp::traits::input_parameter< CharacterVector >::type x(xSEXP);
+    rcpp_result_gen = Rcpp::wrap(dracodecodefile(x));
+    return rcpp_result_gen;
+END_RCPP
+}
+// dracodecode
+List dracodecode(RawVector data);
+RcppExport SEXP _dracor_dracodecode(SEXP dataSEXP) {
+BEGIN_RCPP
+    Rcpp::RObject rcpp_result_gen;
+    Rcpp::RNGScope rcpp_rngScope_gen;
+    Rcpp::traits::input_parameter< RawVector >::type data(dataSEXP);
+    rcpp_result_gen = Rcpp::wrap(dracodecode(data));
     return rcpp_result_gen;
 END_RCPP
 }
 
 static const R_CallMethodDef CallEntries[] = {
-    {"_dracor_rcpp_hello_world", (DL_FUNC) &_dracor_rcpp_hello_world, 0},
+    {"_dracor_dracodecodefile", (DL_FUNC) &_dracor_dracodecodefile, 1},
+    {"_dracor_dracodecode", (DL_FUNC) &_dracor_dracodecode, 1},
     {NULL, NULL, 0}
 };
 
