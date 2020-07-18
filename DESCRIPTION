@@ -3,13 +3,19 @@ Type: Package
 Title: Decode Draco Format 3D Mesh data
 Version: 0.1
 Date: 2020-07-16
-Authors@R: 
+Authors@R: c(
     person("Gregory", "Jefferis", 
     email="jefferis@gmail.com", 
     role = c("aut", "cre"), 
-    comment = c(ORCID = "0000-0002-0587-9355"))
-Description: Decodes meshes encoded by Draco
-License: GPL (>= 2)
+    comment = c(ORCID = "0000-0002-0587-9355")),
+    person("Google Inc", 
+    role=c("aut", "cph"), 
+    comment="for the Draco library")
+    )
+Description: Decodes meshes and point cloud data encoded by Google's Draco mesh
+    compression library. Note that this only designed for mesh decoding and not
+    intended as a full scale wrapping of the Draco library. 
+License: Apache License (>= 2.0)
 Imports: Rcpp (>= 1.0.5)
 LinkingTo: Rcpp
 Url: https://github.com/google/draco

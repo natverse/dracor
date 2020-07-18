@@ -6,10 +6,17 @@
 \alias{dracor-package}
 \title{dracor: Decode Draco Format 3D Mesh data}
 \description{
-Decodes meshes encoded by Draco
+Decodes meshes and point cloud data encoded by Google's Draco mesh
+    compression library. Note that this only designed for mesh decoding and not
+    intended as a full scale wrapping of the
 }
 \author{
 \strong{Maintainer}: Gregory Jefferis \email{jefferis@gmail.com} (\href{https://orcid.org/0000-0002-0587-9355}{ORCID})
+
+Authors:
+\itemize{
+  \item Google Inc (for the Draco library) [copyright holder]
+}
 
 }
 \keyword{internal}
