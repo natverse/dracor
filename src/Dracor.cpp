@@ -105,7 +105,7 @@ List dracodecode(RawVector data) {
   std::array<float, 3> vertex;
   const uint32_t nverts = static_cast<uint32_t>(att->size());
 
-  NumericMatrix verts(nverts, 3);
+  NumericMatrix verts(3, nverts);
   // second loop counter
   uint32_t ii=0;
   for (draco::AttributeValueIndex i(0); i < nverts; ++i) {
@@ -113,25 +113,25 @@ List dracodecode(RawVector data) {
       return List();
     }
     for (int j = 0; j < 3; j++) {
-      verts(ii, j)=vertex[j];
+      verts(j, ii)=vertex[j];
     }
     ++ii;
   }
-  List ret = List::create(Named("verts")=verts);
+  List ret = List::create(Named("points")=verts);
 
   if(geom_type == draco::TRIANGULAR_MESH) {
-    IntegerMatrix faceindices(mesh->num_faces(), 3);
+    IntegerMatrix faceindices(3, mesh->num_faces());
     // get indices for faces
     ii=0;
     for (draco::FaceIndex i(0); i < mesh->num_faces(); ++i) {
       for (int j = 0; j < 3; ++j) {
         draco::PointIndex vert_index = mesh->face(i)[j];
-        faceindices(ii,j)=att->mapped_index(vert_index).value() + 1;
+        faceindices(j, ii)=att->mapped_index(vert_index).value() + 1;
       }
       ++ii;
     }
 
-    ret["faceindices"]=faceindices;
+    ret["faces"]=faceindices;
   }
 
   return ret;
