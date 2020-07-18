@@ -14,3 +14,4 @@ Imports: Rcpp (>= 1.0.5)
 LinkingTo: Rcpp
 Url: https://github.com/google/draco
 RoxygenNote: 7.1.0
+Encoding: UTF-8
