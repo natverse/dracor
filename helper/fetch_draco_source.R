@@ -93,4 +93,18 @@ nchar(longestpath)
 # oof!
 nchar(gsub("prediction_scheme", "ps", longestpath))
 
+# OK so steps are
+# 1. s/prediction_scheme/ps/ for all #include lines (but not other text)
+# 2. s/prediction_scheme/ps/ for all file names
+# 3. s/prediction_scheme/ps/ for all dir names
 
+# repeat twice to do file and dir name of #include
+for(i in 1:2)
+  xfun::gsub_dir("(#include.*)prediction_scheme(.*)$", "\\1ps\\2",dir = 'src', ext = c("cc", "h"))
+
+localhfiles=dir("src", patt='.*prediction_scheme.*\\.h$', recursive = TRUE, full.names = T)
+renamedhfiles <- file.path(dirname(localhfiles), sub("prediction_scheme","ps", basename(localhfiles)))
+mapply(file.rename, localhfiles, renamedhfiles)
+
+hdirs <- dir("src/draco/", patt='prediction_scheme', include.dirs = T, full.names = T, recursive = T)
+mapply(file.rename, hdirs, sub("prediction_scheme", "ps", hdirs))
