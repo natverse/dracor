@@ -15,8 +15,8 @@
 #ifndef DRACO_COMPRESSION_ATTRIBUTES_PREDICTION_SCHEMES_MESH_PREDICTION_SCHEME_TEX_COORDS_PORTABLE_DECODER_H_
 #define DRACO_COMPRESSION_ATTRIBUTES_PREDICTION_SCHEMES_MESH_PREDICTION_SCHEME_TEX_COORDS_PORTABLE_DECODER_H_
 
-#include "draco/compression/attributes/prediction_schemes/mesh_prediction_scheme_decoder.h"
-#include "draco/compression/attributes/prediction_schemes/mesh_prediction_scheme_tex_coords_portable_predictor.h"
+#include "draco/compression/attributes/pss/mesh_ps_decoder.h"
+#include "draco/compression/attributes/pss/mesh_ps_tex_coords_portable_predictor.h"
 #include "draco/compression/bit_coders/rans_bit_decoder.h"
 
 namespace draco {

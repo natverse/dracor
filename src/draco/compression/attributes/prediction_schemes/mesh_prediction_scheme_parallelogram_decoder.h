@@ -15,8 +15,8 @@
 #ifndef DRACO_COMPRESSION_ATTRIBUTES_PREDICTION_SCHEMES_MESH_PREDICTION_SCHEME_PARALLELOGRAM_DECODER_H_
 #define DRACO_COMPRESSION_ATTRIBUTES_PREDICTION_SCHEMES_MESH_PREDICTION_SCHEME_PARALLELOGRAM_DECODER_H_
 
-#include "draco/compression/attributes/prediction_schemes/mesh_prediction_scheme_decoder.h"
-#include "draco/compression/attributes/prediction_schemes/mesh_prediction_scheme_parallelogram_shared.h"
+#include "draco/compression/attributes/pss/mesh_ps_decoder.h"
+#include "draco/compression/attributes/pss/mesh_ps_parallelogram_shared.h"
 
 namespace draco {
 

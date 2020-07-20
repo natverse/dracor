@@ -18,7 +18,7 @@
 
 #include <math.h>
 
-#include "draco/compression/attributes/prediction_schemes/mesh_prediction_scheme_decoder.h"
+#include "draco/compression/attributes/pss/mesh_ps_decoder.h"
 #include "draco/compression/bit_coders/rans_bit_decoder.h"
 #include "draco/core/varint_decoding.h"
 #include "draco/core/vector_d.h"

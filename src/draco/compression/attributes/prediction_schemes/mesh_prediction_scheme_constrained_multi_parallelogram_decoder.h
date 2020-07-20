@@ -18,9 +18,9 @@
 #include <algorithm>
 #include <cmath>
 
-#include "draco/compression/attributes/prediction_schemes/mesh_prediction_scheme_constrained_multi_parallelogram_shared.h"
-#include "draco/compression/attributes/prediction_schemes/mesh_prediction_scheme_decoder.h"
-#include "draco/compression/attributes/prediction_schemes/mesh_prediction_scheme_parallelogram_shared.h"
+#include "draco/compression/attributes/pss/mesh_ps_constrained_multi_parallelogram_shared.h"
+#include "draco/compression/attributes/pss/mesh_ps_decoder.h"
+#include "draco/compression/attributes/pss/mesh_ps_parallelogram_shared.h"
 #include "draco/compression/bit_coders/rans_bit_decoder.h"
 #include "draco/core/varint_decoding.h"
 #include "draco/draco_features.h"

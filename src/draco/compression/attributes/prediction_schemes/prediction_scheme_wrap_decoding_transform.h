@@ -15,7 +15,7 @@
 #ifndef DRACO_COMPRESSION_ATTRIBUTES_PREDICTION_SCHEMES_PREDICTION_SCHEME_WRAP_DECODING_TRANSFORM_H_
 #define DRACO_COMPRESSION_ATTRIBUTES_PREDICTION_SCHEMES_PREDICTION_SCHEME_WRAP_DECODING_TRANSFORM_H_
 
-#include "draco/compression/attributes/prediction_schemes/prediction_scheme_wrap_transform_base.h"
+#include "draco/compression/attributes/pss/ps_wrap_transform_base.h"
 #include "draco/core/decoder_buffer.h"
 
 namespace draco {

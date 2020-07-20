@@ -14,8 +14,8 @@
 //
 #include "draco/compression/attributes/sequential_integer_attribute_decoder.h"
 
-#include "draco/compression/attributes/prediction_schemes/prediction_scheme_decoder_factory.h"
-#include "draco/compression/attributes/prediction_schemes/prediction_scheme_wrap_decoding_transform.h"
+#include "draco/compression/attributes/pss/ps_decoder_factory.h"
+#include "draco/compression/attributes/pss/ps_wrap_decoding_transform.h"
 #include "draco/compression/entropy/symbol_decoding.h"
 
 namespace draco {

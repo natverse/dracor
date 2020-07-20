@@ -15,7 +15,7 @@
 #ifndef DRACO_COMPRESSION_ATTRIBUTES_PREDICTION_SCHEMES_MESH_PREDICTION_SCHEME_GEOMETRIC_NORMAL_PREDICTOR_AREA_H_
 #define DRACO_COMPRESSION_ATTRIBUTES_PREDICTION_SCHEMES_MESH_PREDICTION_SCHEME_GEOMETRIC_NORMAL_PREDICTOR_AREA_H_
 
-#include "draco/compression/attributes/prediction_schemes/mesh_prediction_scheme_geometric_normal_predictor_base.h"
+#include "draco/compression/attributes/pss/mesh_ps_geometric_normal_predictor_base.h"
 
 namespace draco {
 

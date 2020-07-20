@@ -15,7 +15,7 @@
 #ifndef DRACO_COMPRESSION_ATTRIBUTES_SEQUENTIAL_INTEGER_ATTRIBUTE_DECODER_H_
 #define DRACO_COMPRESSION_ATTRIBUTES_SEQUENTIAL_INTEGER_ATTRIBUTE_DECODER_H_
 
-#include "draco/compression/attributes/prediction_schemes/prediction_scheme_decoder.h"
+#include "draco/compression/attributes/pss/ps_decoder.h"
 #include "draco/compression/attributes/sequential_attribute_decoder.h"
 #include "draco/draco_features.h"
 

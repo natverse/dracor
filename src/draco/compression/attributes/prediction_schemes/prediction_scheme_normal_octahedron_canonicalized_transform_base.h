@@ -18,7 +18,7 @@
 #include <cmath>
 
 #include "draco/compression/attributes/normal_compression_utils.h"
-#include "draco/compression/attributes/prediction_schemes/prediction_scheme_normal_octahedron_transform_base.h"
+#include "draco/compression/attributes/pss/ps_normal_octahedron_transform_base.h"
 #include "draco/compression/config/compression_shared.h"
 #include "draco/core/bit_utils.h"
 #include "draco/core/macros.h"

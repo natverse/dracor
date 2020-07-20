@@ -18,18 +18,18 @@
 #ifndef DRACO_COMPRESSION_ATTRIBUTES_PREDICTION_SCHEMES_PREDICTION_SCHEME_DECODER_FACTORY_H_
 #define DRACO_COMPRESSION_ATTRIBUTES_PREDICTION_SCHEMES_PREDICTION_SCHEME_DECODER_FACTORY_H_
 
-#include "draco/compression/attributes/prediction_schemes/mesh_prediction_scheme_constrained_multi_parallelogram_decoder.h"
+#include "draco/compression/attributes/pss/mesh_ps_constrained_multi_parallelogram_decoder.h"
 #include "draco/draco_features.h"
 #ifdef DRACO_NORMAL_ENCODING_SUPPORTED
-#include "draco/compression/attributes/prediction_schemes/mesh_prediction_scheme_geometric_normal_decoder.h"
+#include "draco/compression/attributes/pss/mesh_ps_geometric_normal_decoder.h"
 #endif
-#include "draco/compression/attributes/prediction_schemes/mesh_prediction_scheme_multi_parallelogram_decoder.h"
-#include "draco/compression/attributes/prediction_schemes/mesh_prediction_scheme_parallelogram_decoder.h"
-#include "draco/compression/attributes/prediction_schemes/mesh_prediction_scheme_tex_coords_decoder.h"
-#include "draco/compression/attributes/prediction_schemes/mesh_prediction_scheme_tex_coords_portable_decoder.h"
-#include "draco/compression/attributes/prediction_schemes/prediction_scheme_decoder.h"
-#include "draco/compression/attributes/prediction_schemes/prediction_scheme_delta_decoder.h"
-#include "draco/compression/attributes/prediction_schemes/prediction_scheme_factory.h"
+#include "draco/compression/attributes/pss/mesh_ps_multi_parallelogram_decoder.h"
+#include "draco/compression/attributes/pss/mesh_ps_parallelogram_decoder.h"
+#include "draco/compression/attributes/pss/mesh_ps_tex_coords_decoder.h"
+#include "draco/compression/attributes/pss/mesh_ps_tex_coords_portable_decoder.h"
+#include "draco/compression/attributes/pss/ps_decoder.h"
+#include "draco/compression/attributes/pss/ps_delta_decoder.h"
+#include "draco/compression/attributes/pss/ps_factory.h"
 #include "draco/compression/mesh/mesh_decoder.h"
 
 namespace draco {

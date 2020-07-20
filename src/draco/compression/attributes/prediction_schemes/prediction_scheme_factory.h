@@ -23,7 +23,7 @@
 #define DRACO_COMPRESSION_ATTRIBUTES_PREDICTION_SCHEMES_PREDICTION_SCHEME_FACTORY_H_
 
 #include "draco/compression/attributes/mesh_attribute_indices_encoding_data.h"
-#include "draco/compression/attributes/prediction_schemes/mesh_prediction_scheme_data.h"
+#include "draco/compression/attributes/pss/mesh_ps_data.h"
 #include "draco/compression/config/compression_shared.h"
 #include "draco/mesh/mesh_attribute_corner_table.h"
 

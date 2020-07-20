@@ -15,7 +15,7 @@
 #ifndef DRACO_COMPRESSION_ATTRIBUTES_PREDICTION_SCHEMES_PREDICTION_SCHEME_DECODER_INTERFACE_H_
 #define DRACO_COMPRESSION_ATTRIBUTES_PREDICTION_SCHEMES_PREDICTION_SCHEME_DECODER_INTERFACE_H_
 
-#include "draco/compression/attributes/prediction_schemes/prediction_scheme_interface.h"
+#include "draco/compression/attributes/pss/ps_interface.h"
 #include "draco/core/decoder_buffer.h"
 
 // Prediction schemes can be used during encoding and decoding of attributes

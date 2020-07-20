@@ -17,8 +17,8 @@
 
 #include <type_traits>
 
-#include "draco/compression/attributes/prediction_schemes/prediction_scheme_decoder_interface.h"
-#include "draco/compression/attributes/prediction_schemes/prediction_scheme_decoding_transform.h"
+#include "draco/compression/attributes/pss/ps_decoder_interface.h"
+#include "draco/compression/attributes/pss/ps_decoding_transform.h"
 
 // Prediction schemes can be used during encoding and decoding of vertex
 // attributes to predict attribute values based on the previously
