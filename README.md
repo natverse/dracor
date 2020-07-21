@@ -5,6 +5,8 @@
 
 <!-- badges: start -->
 
+[![Travis build
+status](https://travis-ci.com/jefferis/dracor.svg?branch=master)](https://travis-ci.com/jefferis/dracor)
 <!-- badges: end -->
 
 The goal of **dracor** is to allow decoding of the Draco compressed
