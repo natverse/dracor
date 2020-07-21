@@ -21,7 +21,7 @@ List dracodecodefile(CharacterVector x) {
 }
 
 // [[Rcpp::export]]
-List dracodecode(RawVector data) {
+List dracodecode(RawVector data, const int index_offset=1) {
   draco::DecoderBuffer buffer;
   buffer.Init((char*) &data[0], data.size());
   std::unique_ptr<draco::PointCloud> pc;
@@ -90,7 +90,7 @@ List dracodecode(RawVector data) {
     for (draco::FaceIndex i(0); i < mesh->num_faces(); ++i) {
       for (int j = 0; j < 3; ++j) {
         draco::PointIndex vert_index = mesh->face(i)[j];
-        faceindices(j, ii)=att->mapped_index(vert_index).value() + 1;
+        faceindices(j, ii)=att->mapped_index(vert_index).value() + index_offset;
       }
       ++ii;
     }

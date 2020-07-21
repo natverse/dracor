@@ -6,19 +6,20 @@
 using namespace Rcpp;
 
 // dracodecode
-List dracodecode(RawVector data);
-RcppExport SEXP _dracor_dracodecode(SEXP dataSEXP) {
+List dracodecode(RawVector data, const int index_offset);
+RcppExport SEXP _dracor_dracodecode(SEXP dataSEXP, SEXP index_offsetSEXP) {
 BEGIN_RCPP
     Rcpp::RObject rcpp_result_gen;
     Rcpp::RNGScope rcpp_rngScope_gen;
     Rcpp::traits::input_parameter< RawVector >::type data(dataSEXP);
-    rcpp_result_gen = Rcpp::wrap(dracodecode(data));
+    Rcpp::traits::input_parameter< const int >::type index_offset(index_offsetSEXP);
+    rcpp_result_gen = Rcpp::wrap(dracodecode(data, index_offset));
     return rcpp_result_gen;
 END_RCPP
 }
 
 static const R_CallMethodDef CallEntries[] = {
-    {"_dracor_dracodecode", (DL_FUNC) &_dracor_dracodecode, 1},
+    {"_dracor_dracodecode", (DL_FUNC) &_dracor_dracodecode, 2},
     {NULL, NULL, 0}
 };
 
