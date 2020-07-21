@@ -1,0 +1,82 @@
+---
+output: github_document
+---
+
+<!-- README.md is generated from README.Rmd. Please edit that file -->
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>",
+  fig.path = "man/figures/README-",
+  out.width = "100%"
+)
+rgl::setupKnitr()
+```
+
+# dracor
+
+<!-- badges: start -->
+<!-- badges: end -->
+
+The goal of **dracor** is to allow decoding of the Draco compressed meshes in R. 
+This is done by wrapping the [Draco](https://github.com/google/draco) C++ 
+decoding library with the assistance of the [Rcpp package](https://cran.r-project.org/package=Rcpp).
+
+The original motivation for **dracor** was decoding [neuroglancer](https://github.com/google/neuroglancer) meshes of neurons for
+example as used by http://flywire.ai/.
+
+## Installation
+
+**dracor** is not yet available from [CRAN](https://CRAN.R-project.org) but you
+can install the development version like so:
+
+```{r, eval=FALSE}
+remotes::install_github("jefferis/dracor")
+```
+
+## Example
+
+This is a basic example using a sample from the draco repository
+
+```{r}
+library(dracor)
+# get sample file from draco repository
+resp=httr::GET('https://github.com/google/draco/blob/master/testdata/car.drc?raw=true')
+car.drc=httr::content(resp, 'raw')
+car.m3d=dracor::draco_decode(car.drc)
+str(car.m3d)
+```
+
+
+[rgl](https://cran.r-project.org/package=rgl) is the most widely used R package
+for 3D visualisation. By default we return meshes as rgl `mesh3d` objects, 
+which can then be displayed by `rgl` or manipulated by
+a range of R packages including [Rvcg](https://cran.r-project.org/package=Rvcg).
+```{r, webgl=T}
+# install.packages("rgl")
+# convert to rgl mesh3d format
+rgl::shade3d(car.m3d, col='red')
+# set a nice viewpoint
+rgl::view3d(theta = 60, fov=0, zoom=.7)
+```
+
+## Some details
+
+**dracor** is deliberately intended as a minimal decoder package without any
+dependencies besides the Rcpp package. It only accepts raw bytes as input and can produce either an [rgl](https://cran.r-project.org/package=rgl) `mesh3d` object as output or a list containing points and 0-indexed faces. It essentially 
+replicates the most basic decoding ability of the `draco_decoder` command line tool.
+
+If you just want something as close as possible as the Draco library would give
+then set `mesh3d=FALSE`
+```{r}
+car.m=dracor::draco_decode(car.drc, mesh3d=FALSE)
+str(car.m)
+```
+
+## Acknowledgements 
+
+Many thanks to the authors of:
+
+* [Draco library](https://github.com/google/draco) library
+* [Rcpp package](https://cran.r-project.org/package=Rcpp)
