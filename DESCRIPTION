@@ -18,12 +18,11 @@ Description: Decodes meshes and point cloud data encoded by Google's Draco mesh
 License: Apache License (>= 2.0)
 Imports: Rcpp (>= 1.0.5)
 LinkingTo: Rcpp
-Url: https://github.com/google/draco
 RoxygenNote: 7.1.0
 Encoding: UTF-8
 Suggests: 
     testthat,
     spelling
-URL: https://github.com/jefferis/dracor
+URL: https://github.com/jefferis/dracor, https://github.com/google/draco
 BugReports: https://github.com/jefferis/dracor/issues
 Language: en-GB
