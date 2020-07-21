@@ -22,6 +22,8 @@ Url: https://github.com/google/draco
 RoxygenNote: 7.1.0
 Encoding: UTF-8
 Suggests: 
-    testthat
+    testthat,
+    spelling
 URL: https://github.com/jefferis/dracor
 BugReports: https://github.com/jefferis/dracor/issues
+Language: en-GB
