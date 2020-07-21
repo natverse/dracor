@@ -4,24 +4,44 @@
 \alias{draco_decode}
 \title{Decode Draco encoded raw bytes containing mesh or point cloud data}
 \usage{
-draco_decode(data)
+draco_decode(data, mesh3d = TRUE)
 }
 \arguments{
 \item{data}{\code{\link{raw}} bytes containing Draco data e.g. as read by
 \code{\link{readBin}}}
+
+\item{mesh3d}{Whether to return \code{rgl::mesh3d} object (when \code{TRUE},
+the default) or something as close as possible to what is provided by the
+Draco library (when \code{FALSE}).}
 }
 \value{
-a list containing elements \code{points} and (for meshes)
-  \code{faces}.
+a \code{rgl::mesh3d} object or a list containing elements
+  \code{points} and (for meshes). \code{faces}.
 }
 \description{
 Decode Draco encoded raw bytes containing mesh or point cloud data
 }
+\details{
+Note that the Draco library returns 0-based indices for the faces
+  whereas R in general and \code{rgl::mesh3d} in particular expect 1-based
+  indices. When \code{mesh3d=FALSE}, the result will have 0-based indices as
+  returned by the Draco library.
+}
 \examples{
 
 \dontrun{
-## convert to standard rgl::mesh3d object
-res=draco_decode(data)
-m=rgl::tmesh3d(vertices=res$points, indices=res$faces, homogeneous = FALSE)
+# fetch test data
+resp=httr::GET('https://github.com/google/draco/blob/master/testdata/car.drc?raw=true')
+car.drc=httr::content(resp, 'raw')
+car.m=draco_decode(car.drc)
+# show the result
+rgl::shade3d(car.m, col='red')
+
+## demonstrate conversion of raw form to standard rgl::mesh3d object
+car.raw=draco_decode(data, mesh3d=FALSE)
+car.m2 = rgl::tmesh3d(
+  vertices = res$points,
+  indices = res$faces + 1,
+  homogeneous = FALSE)
 }
 }

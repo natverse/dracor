@@ -10,6 +10,14 @@ Decodes meshes and point cloud data encoded by Google's Draco mesh
     compression library. Note that this only designed for mesh decoding and not
     intended as a full scale wrapping of the Draco library.
 }
+\seealso{
+Useful links:
+\itemize{
+  \item \url{https://github.com/jefferis/dracor}
+  \item Report bugs at \url{https://github.com/jefferis/dracor/issues}
+}
+
+}
 \author{
 \strong{Maintainer}: Gregory Jefferis \email{jefferis@gmail.com} (\href{https://orcid.org/0000-0002-0587-9355}{ORCID})
 
