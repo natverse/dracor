@@ -13,11 +13,11 @@ List dracodecodefile(CharacterVector x) {
   std::vector<std::string> f = as<std::vector<std::string> >(x);
   std::vector<char> data;
   if (!draco::ReadFileToBuffer(f[0], &data)) {
-    return List();
+    return List("Failed to read file");
   }
 
   buffer.Init(data.data(), data.size());
-  return List("not implemented");
+  return List("Not implemented");
 }
 
 // [[Rcpp::export]]
@@ -29,7 +29,7 @@ List dracodecode(RawVector data, const int index_offset=1) {
   auto type_statusor = draco::Decoder::GetEncodedGeometryType(&buffer);
 
   if (!type_statusor.ok()) {
-    return List();
+    return List("Unable to determine geometry. Bad input data?");
   }
   const draco::EncodedGeometryType geom_type = type_statusor.value();
 
@@ -37,7 +37,7 @@ List dracodecode(RawVector data, const int index_offset=1) {
     draco::Decoder decoder;
     auto statusor = decoder.DecodeMeshFromBuffer(&buffer);
     if (!statusor.ok()) {
-      return List();
+      return List("Unable to decode triangular mesh data");
     }
     std::unique_ptr<draco::Mesh> in_mesh = std::move(statusor).value();
     if (in_mesh) {
@@ -48,23 +48,22 @@ List dracodecode(RawVector data, const int index_offset=1) {
     draco::Decoder decoder;
     auto statusor = decoder.DecodePointCloudFromBuffer(&buffer);
     if (!statusor.ok()) {
-      return List();
+      return List("Unable to decode point cloud data");
     }
     pc = std::move(statusor).value();
   } else {
-    return List();
+    return List("Unsupported geometry type");
   }
 
   if (pc == nullptr) {
-    // printf("Failed to decode the input file.\n");
-    return List();
+    return List("Failed to decode the input data");
   }
 
   // get vertex positions
   const draco::PointAttribute *const att =
     pc->GetNamedAttribute(draco::GeometryAttribute::POSITION);
   if (att == nullptr || att->size() == 0) {
-    return List();  // Position attribute must be valid.
+    return List("No 3D position attribute found in data");
   }
   std::array<float, 3> vertex;
   const uint32_t nverts = static_cast<uint32_t>(att->size());
@@ -74,7 +73,7 @@ List dracodecode(RawVector data, const int index_offset=1) {
   uint32_t ii=0;
   for (draco::AttributeValueIndex i(0); i < nverts; ++i) {
     if (!att->ConvertValue<float, 3>(i, &vertex[0])) {
-      return List();
+      return List("Error converting 3D vertex positions");
     }
     for (int j = 0; j < 3; j++) {
       verts(j, ii)=vertex[j];

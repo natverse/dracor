@@ -58,15 +58,14 @@ draco_decode <- function(data, mesh3d=TRUE, ...) {
       # looks like a URL. Let's download
       tf=tempfile(fileext = '.drc')
       tryCatch(download.file(path, destfile = tf, ...),
-               error=function(e) stop("Unable to download draco data from:", path))
+               error=function(e) stop("Unable to download data from: ", path))
       path=tf
       on.exit(unlink(tf))
     }
     # let's read the file from disk
     tryCatch({
       data=readBin(path, what = raw(), n = file.info(path)$size)
-      error=function(e) stop("Unable to read raw data from file:",
-                             path)
+      error=function(e) stop("Unable to read raw data from file: ", path)
     })
   }
   if(!is.raw(data))
@@ -80,8 +79,10 @@ draco_decode <- function(data, mesh3d=TRUE, ...) {
   index_offset=ifelse(mesh3d, 1L, 0L)
 
   res=.Call(`_dracor_dracodecode`, data, index_offset)
-  if(length(res)==0)
-    stop("Unable to parse input data!")
+  # errors return a list of length 1 containing a string
+  if(length(res)==1 && is.character(res[[1]]))
+    stop(res[[1]])
+
   if(isTRUE(mesh3d)) {
     res <- structure(list(vb = rbind(res$points, 1),
                           it = res$faces),

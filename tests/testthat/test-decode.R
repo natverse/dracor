@@ -8,6 +8,14 @@ test_that("decoding works", {
   # check that this matches our previous raw format
   raw$faces=raw$faces+1
   expect_known_value(raw, 'testdata/mesh.rds')
+
+  # error when we don't get draco data
+  expect_error(draco_decode('testdata/mesh.ply'), 'Bad input')
+
+  # trunc=readBin('tests/testthat/testdata/mesh.draco', what=raw(), n = 1000)
+  # writeBin(trunc, 'mesh.draco.truncated')
+  expect_error(draco_decode('testdata/mesh.draco.truncated'),
+               "Unable to decode triangular mesh")
 })
 
 test_that("decoding URL works", {
