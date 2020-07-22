@@ -18,6 +18,7 @@ Description: Decodes meshes and point cloud data encoded by the Draco mesh
 License: Apache License (>= 2.0)
 Imports: Rcpp (>= 1.0.5)
 LinkingTo: Rcpp
+Enhances: rgl
 Suggests: 
     testthat,
     spelling
