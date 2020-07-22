@@ -1,16 +1,19 @@
 test_that("decoding works", {
   infile="testdata/mesh.draco"
-  expect_is(mesh3d <- draco_decodefile(infile, mesh3d = T), 'mesh3d')
+  expect_is(mesh3d <- draco_decode(infile, mesh3d = T), 'mesh3d')
   expect_known_value(mesh3d, 'testdata/mesh3d.rds')
 
-  expect_known_value(raw <- draco_decodefile(infile, mesh3d = F),
+  expect_known_value(raw <- draco_decode(infile, mesh3d = F),
                      'testdata/meshraw.rds')
   # check that this matches our previous raw format
   raw$faces=raw$faces+1
   expect_known_value(raw, 'testdata/mesh.rds')
+})
 
-  # m2=Rvcg::vcgPlyRead('testdata/mesh.ply', clean = F, updateNormals = T)
-  # m3=readobj::read.obj('testdata/mesh.obj')
+test_that("decoding URL works", {
+  skip_if_offline()
+  carurl='https://github.com/google/draco/blob/master/testdata/car.drc?raw=true'
+  expect_is(car <- draco_decode(carurl, quiet=TRUE),'mesh3d')
 })
 
 # (base) Gregs-MBP-2:build jefferis$ ./draco_encoder -i /Users/jefferis/dev/R/dracor/tests/testthat/testdata/mesh.ply -o /Users/jefferis/dev/R/dracor/tests/testthat/testdata/mesh.ply.draco

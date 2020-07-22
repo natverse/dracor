@@ -1,36 +1,69 @@
 #' Decode Draco encoded raw bytes containing mesh or point cloud data
 #'
 #' @param data \code{\link{raw}} bytes containing Draco data e.g. as read by
-#'   \code{\link{readBin}}
+#'   \code{\link{readBin}} OR a character vector containing a URL or a path to a
+#'   file on disk.
 #' @param mesh3d Whether to return \code{rgl::mesh3d} object (when \code{TRUE},
 #'   the default) or something as close as possible to what is provided by the
 #'   Draco library (when \code{FALSE}).
+#' @param ... Additional arguments passed to \code{\link{download.file}} when
+#'   data is a URL (e.g. \code{quiet=TRUE} or \code{method})
 #'
 #' @return a \code{rgl::mesh3d} object or a list containing elements
 #'   \code{points} and (for meshes). \code{faces}.
-#' @export
+#'
 #' @details Note that the Draco library returns 0-based indices for the faces
 #'   whereas R in general and \code{rgl::mesh3d} in particular expect 1-based
 #'   indices. When \code{mesh3d=FALSE}, the result will have 0-based indices as
 #'   returned by the Draco library.
-#' @examples
 #'
-#' \dontrun{
+#'   If \code{data} is an http/https URL it will be downloaded to a temporary
+#'   location on disk (using \code{\link{download.file}}). If \code{data} is a
+#'   character vector that does not look like a URL then it is assumed to refer
+#'   to a file on disk (which will be read with \code{\link{readBin}}.
+#'
+#' @export
+#' @importFrom utils download.file
+#'
+#' @examples
+#' \donttest{
 #' # fetch test data
-#' resp=httr::GET('https://github.com/google/draco/blob/master/testdata/car.drc?raw=true')
-#' car.drc=httr::content(resp, 'raw')
-#' car.m=draco_decode(car.drc)
-#' # show the result
+#' carurl='https://github.com/google/draco/blob/master/testdata/car.drc?raw=true'
+#' car.m=draco_decode(carurl)
+#' str(car.m)
+#'
+#' ## show the result
+#' if(requireNamespace("rgl", quietly=TRUE)) {
 #' rgl::shade3d(car.m, col='red')
 #'
-#' ## demonstrate conversion of raw form to standard rgl::mesh3d object
-#' car.raw=draco_decode(data, mesh3d=FALSE)
+#' ## demonstrate conversion of raw form to rgl::mesh3d object
+#' car.raw=draco_decode(carurl, mesh3d=FALSE)
+#' str(car.raw)
 #' car.m2 = rgl::tmesh3d(
-#'   vertices = res$points,
-#'   indices = res$faces + 1,
+#'   vertices = car.raw$points,
+#'   indices = car.raw$faces + 1,
 #'   homogeneous = FALSE)
 #' }
-draco_decode <- function(data, mesh3d=TRUE) {
+#' }
+draco_decode <- function(data, mesh3d=TRUE, ...) {
+  if(is.character(data)) {
+    path=data
+    if(length(path)>1) stop("I can only read one file at a time!")
+    if(isTRUE(grepl("^http[s]{0,1}://", path))) {
+      # looks like a URL. Let's download
+      tf=tempfile(fileext = '.drc')
+      tryCatch(download.file(path, destfile = tf, ...),
+               error=function(e) stop("Unable to download draco data from:", path))
+      path=tf
+      on.exit(unlink(tf))
+    }
+    # let's read the file from disk
+    tryCatch({
+      data=readBin(path, what = raw(), n = file.info(path)$size)
+      error=function(e) stop("Unable to read raw data from file:",
+                             path)
+    })
+  }
   if(!is.raw(data))
     stop("The `data` argument should contain `raw` bytes!")
   if(!is.logical(mesh3d))
@@ -50,10 +83,4 @@ draco_decode <- function(data, mesh3d=TRUE) {
                      class = c("mesh3d", "shape3d"))
   }
   res
-}
-
-# Private utility function
-draco_decodefile <- function(x, mesh3d=TRUE) {
-  data=readBin(x, what = raw(), n = file.info(x)$size)
-  draco_decode(data, mesh3d=mesh3d)
 }

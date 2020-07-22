@@ -2,4 +2,5 @@
 
 export(draco_decode)
 import(Rcpp)
+importFrom(utils,download.file)
 useDynLib(dracor, .registration=TRUE)
