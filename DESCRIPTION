@@ -1,6 +1,6 @@
 Package: dracor
 Type: Package
-Title: Decode Draco Format 3D Mesh data
+Title: Decode Draco Format 3D Mesh Data
 Version: 0.2
 Date: 2020-07-21
 Authors@R: c(
@@ -12,9 +12,9 @@ Authors@R: c(
     role=c("aut", "cph"), 
     comment="for the Draco library")
     )
-Description: Decodes meshes and point cloud data encoded by Google's Draco mesh
-    compression library. Note that this only designed for mesh decoding and not
-    intended as a full scale wrapping of the Draco library. 
+Description: Decodes meshes and point cloud data encoded by the Draco mesh
+    compression library from Google. Note that this is only designed for basic 
+    decoding and not intended as a full scale wrapping of the Draco library. 
 License: Apache License (>= 2.0)
 Imports: Rcpp (>= 1.0.5)
 LinkingTo: Rcpp
