@@ -28,8 +28,13 @@
 #' @examples
 #' \donttest{
 #' # fetch test data
+#' # originally downloaded from:
 #' carurl='https://github.com/google/draco/blob/master/testdata/car.drc?raw=true'
+#' \dontrun{
 #' car.m=draco_decode(carurl)
+#' }
+#' # use cached version in package for example
+#' car.m=draco_decode(system.file('draco/car.drc', package = 'dracor'))
 #' str(car.m)
 #'
 #' ## show the result
