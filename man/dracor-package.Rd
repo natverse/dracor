@@ -4,16 +4,17 @@
 \name{dracor-package}
 \alias{dracor}
 \alias{dracor-package}
-\title{dracor: Decode Draco Format 3D Mesh data}
+\title{dracor: Decode Draco Format 3D Mesh Data}
 \description{
-Decodes meshes and point cloud data encoded by Google's Draco mesh
-    compression library. Note that this only designed for mesh decoding and not
-    intended as a full scale wrapping of the Draco library.
+Decodes meshes and point cloud data encoded by the Draco mesh
+    compression library from Google. Note that this is only designed for basic 
+    decoding and not intended as a full scale wrapping of the Draco library.
 }
 \seealso{
 Useful links:
 \itemize{
   \item \url{https://github.com/jefferis/dracor}
+  \item \url{https://github.com/google/draco}
   \item Report bugs at \url{https://github.com/jefferis/dracor/issues}
 }
 
