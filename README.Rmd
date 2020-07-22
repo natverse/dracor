@@ -25,7 +25,7 @@ This is done by wrapping the [Draco](https://github.com/google/draco) C++
 decoding library with the assistance of the [Rcpp package](https://cran.r-project.org/package=Rcpp).
 
 The original motivation for **dracor** was decoding [neuroglancer](https://github.com/google/neuroglancer) meshes of neurons for
-example as used by http://flywire.ai/.
+example as used by https://flywire.ai/.
 
 ## Installation
 
@@ -43,9 +43,8 @@ This is a basic example using a sample from the draco repository
 ```{r}
 library(dracor)
 # get sample file from draco repository
-resp=httr::GET('https://github.com/google/draco/blob/master/testdata/car.drc?raw=true')
-car.drc=httr::content(resp, 'raw')
-car.m3d=dracor::draco_decode(car.drc)
+carurl='https://github.com/google/draco/blob/master/testdata/car.drc?raw=true'
+car.m3d=dracor::draco_decode(carurl)
 str(car.m3d)
 ```
 
@@ -65,13 +64,13 @@ rgl::view3d(theta = 60, fov=0, zoom=.7)
 ## Some details
 
 **dracor** is deliberately intended as a minimal decoder package without any
-dependencies besides the Rcpp package. It only accepts raw bytes as input and can produce either an [rgl](https://cran.r-project.org/package=rgl) `mesh3d` object as output or a list containing points and 0-indexed faces. It essentially 
+dependencies besides the Rcpp package. It accepts raw bytes, a file or a URL as input and can produce either an [rgl](https://cran.r-project.org/package=rgl) `mesh3d` object as output or a list containing points and 0-indexed faces. It essentially 
 replicates the most basic decoding ability of the `draco_decoder` command line tool.
 
-If you just want something as close as possible as the Draco library would give
+If you just want a result as close as possible to what the Draco library would give
 then set `mesh3d=FALSE`
 ```{r}
-car.m=dracor::draco_decode(car.drc, mesh3d=FALSE)
+car.m=dracor::draco_decode(carurl, mesh3d=FALSE)
 str(car.m)
 ```
 
@@ -79,5 +78,5 @@ str(car.m)
 
 Many thanks to the authors of:
 
-* [Draco library](https://github.com/google/draco) library
+* [Draco library](https://github.com/google/draco)
 * [Rcpp package](https://cran.r-project.org/package=Rcpp)
