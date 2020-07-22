@@ -2,6 +2,7 @@
 
 * `draco_decode()` can now decode a URL or file on disk
 * Add `Enhances: rgl` so that we can use rgl in examples
+* Better error messages
 
 # dracor 0.2
 
