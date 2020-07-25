@@ -13,8 +13,8 @@ Authors@R: c(
     comment="for the Draco library")
     )
 Description: Decodes meshes and point cloud data encoded by the Draco mesh
-    compression library from Google. Note that this is only designed for basic 
-    decoding and not intended as a full scale wrapping of the Draco library. 
+    compression library from Google. Note that this is only designed for basic
+    decoding and not intended as a full scale wrapping of the Draco library.
 License: Apache License (>= 2.0)
 Imports: Rcpp (>= 1.0.5)
 LinkingTo: Rcpp
