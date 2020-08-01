@@ -5,20 +5,20 @@ using namespace std;
 #include <cinttypes>
 #include "draco/draco_features.h"
 #include "draco/compression/decode.h"
-#include "draco/io/file_utils.h"
-
-List dracodecodefile(CharacterVector x) {
-  draco::DecoderBuffer buffer;
-
-  std::vector<std::string> f = as<std::vector<std::string> >(x);
-  std::vector<char> data;
-  if (!draco::ReadFileToBuffer(f[0], &data)) {
-    return List("Failed to read file");
-  }
-
-  buffer.Init(data.data(), data.size());
-  return List("Not implemented");
-}
+// #include "draco/io/file_utils.h"
+//
+// List dracodecodefile(CharacterVector x) {
+//   draco::DecoderBuffer buffer;
+//
+//   std::vector<std::string> f = as<std::vector<std::string> >(x);
+//   std::vector<char> data;
+//   if (!draco::ReadFileToBuffer(f[0], &data)) {
+//     return List("Failed to read file");
+//   }
+//
+//   buffer.Init(data.data(), data.size());
+//   return List("Not implemented");
+// }
 
 // [[Rcpp::export]]
 List dracodecode(RawVector data, const int index_offset=1) {
