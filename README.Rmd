@@ -18,6 +18,7 @@ rgl::setupKnitr()
 
 <!-- badges: start -->
 [![Travis build status](https://travis-ci.com/jefferis/dracor.svg?branch=master)](https://travis-ci.com/jefferis/dracor)
+[![CRAN status](https://www.r-pkg.org/badges/version/dracor)](https://CRAN.R-project.org/package=dracor)
 <!-- badges: end -->
 
 The goal of **dracor** is to allow decoding of the Draco compressed meshes in R. 
@@ -29,8 +30,13 @@ example as used by https://flywire.ai/.
 
 ## Installation
 
-**dracor** is not yet available from [CRAN](https://CRAN.R-project.org) but you
-can install the development version like so:
+**dracor** is available from [CRAN](https://cran.r-project.org/package=dracor):
+
+```{r, eval=FALSE}
+install.packages('dracor')
+```
+
+but you can also install the development version like so:
 
 ```{r, eval=FALSE}
 remotes::install_github("jefferis/dracor")
