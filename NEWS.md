@@ -1,3 +1,8 @@
+# dracor 0.2.2
+
+* remove excess Draco library source code files (#1)
+* fix build error on windows-oldrel due to gcc 4.9.3 compile error (#2)
+
 # dracor 0.2.1
 
 * `draco_decode()` can now decode a URL or file on disk
