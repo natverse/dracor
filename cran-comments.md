@@ -20,7 +20,7 @@ https://www.r-project.org/nosvn/R.check/r-oldrel-windows-ix86+x86_64/dracor-00ch
 
 * removes some unnecessary source files from the Draco library, reducing the 
   compiled size of the package
-* updates the README to reflect that package's CRAN status
+* updates the README to reflect the package's CRAN status
 
 ## R CMD check results
 
