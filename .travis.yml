@@ -10,3 +10,5 @@ deploy:
 env:
   global:
     - MAKEFLAGS="-j 2"
+before_install:
+  - echo 'options(Ncpus = 2)' >> ~/.Rprofile
