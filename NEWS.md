@@ -1,3 +1,10 @@
+# dracor 0.2.3
+
+* fix compilation on gcc11 due to missing #include in draco library (#3)
+  (reported by BDR)
+* fix for README URL
+* dev: travis fixes
+
 # dracor 0.2.2
 
 * remove excess Draco library source code files (#1)
