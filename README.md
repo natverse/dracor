@@ -10,7 +10,7 @@ status](https://travis-ci.com/jefferis/dracor.svg?branch=master)](https://travis
 [![CRAN
 status](https://www.r-pkg.org/badges/version/dracor)](https://CRAN.R-project.org/package=dracor)
 [![GitHub](https://img.shields.io/github/v/release/jefferis/dracor)](https://github.com/jefferis/dracor/releases/)
-[![Downloads](http://cranlogs.r-pkg.org/badges/dracor?color=brightgreen)](http://www.r-pkg.org/pkg/dracor)
+[![Downloads](http://cranlogs.r-pkg.org/badges/dracor?color=brightgreen)](https://www.r-pkg.org/pkg/dracor)
 <!-- badges: end -->
 
 The goal of **dracor** is to allow decoding of the Draco compressed
