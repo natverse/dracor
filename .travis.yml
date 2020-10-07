@@ -2,7 +2,13 @@
 
 language: R
 cache: packages
-before_cache: Rscript -e 'remotes::install_cran("pkgdown")'
+r_packages: pkgdown
+addons:
+  apt:
+    packages:
+    - libharfbuzz-dev
+    - libfribidi-dev
+
 deploy:
   provider: script
   script: Rscript -e 'pkgdown::deploy_site_github()'
