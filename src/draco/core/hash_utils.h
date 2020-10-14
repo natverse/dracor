@@ -15,12 +15,10 @@
 #ifndef DRACO_CORE_HASH_UTILS_H_
 #define DRACO_CORE_HASH_UTILS_H_
 
-#include <cstddef>
 #include <stdint.h>
 
+#include <cstddef>
 #include <functional>
-
-// TODO(fgalligan): Move this to core.
 
 namespace draco {
 
