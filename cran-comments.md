@@ -4,6 +4,7 @@
 * ubuntu 16.04 (on travis-ci), R 4.0.2
 * Winbuilder r-devel
 
+https://win-builder.r-project.org/h2lYYVnor68J/00check.log
 
 ## Notes
 
