@@ -83,32 +83,36 @@
 <a href="#installation" class="anchor"></a>Installation</h2>
 <p><strong>dracor</strong> is available from <a href="https://cran.r-project.org/package=dracor">CRAN</a>:</p>
 <div class="sourceCode" id="cb1"><pre class="downlit">
-<span class="fu"><a href="https://rdrr.io/r/utils/install.packages.html">install.packages</a></span><span class="op">(</span><span class="st">'dracor'</span><span class="op">)</span></pre></div>
+<span class="fu"><a href="https://rdrr.io/r/utils/install.packages.html">install.packages</a></span>(<span class="st">'dracor'</span>)
+</pre></div>
 <p>but you can also install the development version like so:</p>
 <div class="sourceCode" id="cb2"><pre class="downlit">
-<span class="fu">remotes</span><span class="fu">::</span><span class="fu"><a href="https://remotes.r-lib.org/reference/install_github.html">install_github</a></span><span class="op">(</span><span class="st">"jefferis/dracor"</span><span class="op">)</span></pre></div>
+<span class="kw">remotes</span>::<span class="fu"><a href="https://remotes.r-lib.org/reference/install_github.html">install_github</a></span>(<span class="st">"jefferis/dracor"</span>)
+</pre></div>
 </div>
 <div id="example" class="section level2">
 <h2 class="hasAnchor">
 <a href="#example" class="anchor"></a>Example</h2>
 <p>This is a basic example using a sample from the draco repository</p>
 <div class="sourceCode" id="cb3"><pre class="downlit">
-<span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/jefferis/dracor">dracor</a></span><span class="op">)</span>
+<span class="fu"><a href="https://rdrr.io/r/base/library.html">library</a></span>(<span class="kw"><a href="https://github.com/jefferis/dracor">dracor</a></span>)
 <span class="co"># get sample file from draco repository</span>
-<span class="va">carurl</span><span class="op">=</span><span class="st">'https://github.com/google/draco/blob/master/testdata/car.drc?raw=true'</span>
-<span class="va">car.m3d</span><span class="op">=</span><span class="fu">dracor</span><span class="fu">::</span><span class="fu"><a href="reference/draco_decode.html">draco_decode</a></span><span class="op">(</span><span class="va">carurl</span><span class="op">)</span>
-<span class="fu"><a href="https://rdrr.io/r/utils/str.html">str</a></span><span class="op">(</span><span class="va">car.m3d</span><span class="op">)</span>
+<span class="kw">carurl</span><span class="op">=</span><span class="st">'https://github.com/google/draco/blob/master/testdata/car.drc?raw=true'</span>
+<span class="kw">car.m3d</span><span class="op">=</span><span class="kw">dracor</span>::<span class="fu"><a href="reference/draco_decode.html">draco_decode</a></span>(<span class="kw">carurl</span>)
+<span class="fu"><a href="https://rdrr.io/r/utils/str.html">str</a></span>(<span class="kw">car.m3d</span>)
 <span class="co">#&gt; List of 2</span>
 <span class="co">#&gt;  $ vb: num [1:4, 1:1856] 1.54 1.65 -1.21 1 1.57 ...</span>
 <span class="co">#&gt;  $ it: int [1:3, 1:1744] 1 2 3 3 2 4 4 2 5 5 ...</span>
-<span class="co">#&gt;  - attr(*, "class")= chr [1:2] "mesh3d" "shape3d"</span></pre></div>
+<span class="co">#&gt;  - attr(*, "class")= chr [1:2] "mesh3d" "shape3d"</span>
+</pre></div>
 <p><a href="https://cran.r-project.org/package=rgl">rgl</a> is the most widely used R package for 3D visualisation. By default we return meshes as rgl <code>mesh3d</code> objects, which can then be displayed by <code>rgl</code> or manipulated by a range of R packages including <a href="https://cran.r-project.org/package=Rvcg">Rvcg</a>.</p>
 <div class="sourceCode" id="cb4"><pre class="downlit">
 <span class="co"># install.packages("rgl")</span>
 <span class="co"># convert to rgl mesh3d format</span>
-<span class="fu">rgl</span><span class="fu">::</span><span class="fu">shade3d</span><span class="op">(</span><span class="va">car.m3d</span>, col<span class="op">=</span><span class="st">'red'</span><span class="op">)</span>
+<span class="kw">rgl</span>::<span class="fu">shade3d</span>(<span class="kw">car.m3d</span>, col=<span class="st">'red'</span>)
 <span class="co"># set a nice viewpoint</span>
-<span class="fu">rgl</span><span class="fu">::</span><span class="fu">view3d</span><span class="op">(</span>theta <span class="op">=</span> <span class="fl">60</span>, fov<span class="op">=</span><span class="fl">0</span>, zoom<span class="op">=</span><span class="fl">.7</span><span class="op">)</span></pre></div>
+<span class="kw">rgl</span>::<span class="fu">view3d</span>(theta = <span class="fl">60</span>, fov=<span class="fl">0</span>, zoom=<span class="fl">.7</span>)
+</pre></div>
 <script>/*
 * Copyright (C) 2009 Apple Inc. All Rights Reserved.
 *
@@ -4484,11 +4488,12 @@ unnamed_chunk_5rgl.prefix = "unnamed_chunk_5";
 <p><strong>dracor</strong> is deliberately intended as a minimal decoder package without any dependencies besides the Rcpp package. It accepts raw bytes, a file or a URL as input and can produce either an <a href="https://cran.r-project.org/package=rgl">rgl</a> <code>mesh3d</code> object as output or a list containing points and 0-indexed faces. It essentially replicates the most basic decoding ability of the <code>draco_decoder</code> command line tool.</p>
 <p>If you just want a result as close as possible to what the Draco library would give then set <code>mesh3d=FALSE</code></p>
 <div class="sourceCode" id="cb5"><pre class="downlit">
-<span class="va">car.m</span><span class="op">=</span><span class="fu">dracor</span><span class="fu">::</span><span class="fu"><a href="reference/draco_decode.html">draco_decode</a></span><span class="op">(</span><span class="va">carurl</span>, mesh3d<span class="op">=</span><span class="cn">FALSE</span><span class="op">)</span>
-<span class="fu"><a href="https://rdrr.io/r/utils/str.html">str</a></span><span class="op">(</span><span class="va">car.m</span><span class="op">)</span>
+<span class="kw">car.m</span><span class="op">=</span><span class="kw">dracor</span>::<span class="fu"><a href="reference/draco_decode.html">draco_decode</a></span>(<span class="kw">carurl</span>, mesh3d=<span class="fl">FALSE</span>)
+<span class="fu"><a href="https://rdrr.io/r/utils/str.html">str</a></span>(<span class="kw">car.m</span>)
 <span class="co">#&gt; List of 2</span>
 <span class="co">#&gt;  $ points: num [1:3, 1:1856] 1.54 1.65 -1.21 1.57 1.77 ...</span>
-<span class="co">#&gt;  $ faces : int [1:3, 1:1744] 0 1 2 2 1 3 3 1 4 4 ...</span></pre></div>
+<span class="co">#&gt;  $ faces : int [1:3, 1:1744] 0 1 2 2 1 3 3 1 4 4 ...</span>
+</pre></div>
 </div>
 <div id="acknowledgements" class="section level2">
 <h2 class="hasAnchor">
