@@ -5,6 +5,11 @@
 
 using namespace Rcpp;
 
+#ifdef RCPP_USE_GLOBAL_ROSTREAM
+Rcpp::Rostream<true>&  Rcpp::Rcout = Rcpp::Rcpp_cout_get();
+Rcpp::Rostream<false>& Rcpp::Rcerr = Rcpp::Rcpp_cerr_get();
+#endif
+
 // dracodecode
 List dracodecode(RawVector data, const int index_offset);
 RcppExport SEXP _dracor_dracodecode(SEXP dataSEXP, SEXP index_offsetSEXP) {
@@ -17,9 +22,35 @@ BEGIN_RCPP
     return rcpp_result_gen;
 END_RCPP
 }
+// dracoencode
+void dracoencode(const NumericVector vertices, const NumericVector faces, int num_vertices, int num_faces);
+RcppExport SEXP _dracor_dracoencode(SEXP verticesSEXP, SEXP facesSEXP, SEXP num_verticesSEXP, SEXP num_facesSEXP) {
+BEGIN_RCPP
+    Rcpp::RNGScope rcpp_rngScope_gen;
+    Rcpp::traits::input_parameter< const NumericVector >::type vertices(verticesSEXP);
+    Rcpp::traits::input_parameter< const NumericVector >::type faces(facesSEXP);
+    Rcpp::traits::input_parameter< int >::type num_vertices(num_verticesSEXP);
+    Rcpp::traits::input_parameter< int >::type num_faces(num_facesSEXP);
+    dracoencode(vertices, faces, num_vertices, num_faces);
+    return R_NilValue;
+END_RCPP
+}
+// timesTwo
+NumericVector timesTwo(NumericVector x);
+RcppExport SEXP _dracor_timesTwo(SEXP xSEXP) {
+BEGIN_RCPP
+    Rcpp::RObject rcpp_result_gen;
+    Rcpp::RNGScope rcpp_rngScope_gen;
+    Rcpp::traits::input_parameter< NumericVector >::type x(xSEXP);
+    rcpp_result_gen = Rcpp::wrap(timesTwo(x));
+    return rcpp_result_gen;
+END_RCPP
+}
 
 static const R_CallMethodDef CallEntries[] = {
     {"_dracor_dracodecode", (DL_FUNC) &_dracor_dracodecode, 2},
+    {"_dracor_dracoencode", (DL_FUNC) &_dracor_dracoencode, 4},
+    {"_dracor_timesTwo", (DL_FUNC) &_dracor_timesTwo, 1},
     {NULL, NULL, 0}
 };
 

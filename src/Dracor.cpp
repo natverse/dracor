@@ -5,7 +5,17 @@ using namespace std;
 #include <cinttypes>
 #include "draco/draco_features.h"
 #include "draco/compression/decode.h"
-// #include "draco/io/file_utils.h"
+#include "draco/io/ply_decoder.h"
+
+#include "draco/mesh/mesh.h"
+#include "draco/point_cloud/point_cloud.h"
+#include "draco/attributes/point_attribute.h"
+
+#include "draco/core/encoder_buffer.h"
+#include "draco/compression/encode.h"
+#include "draco/io/mesh_io.h"
+#include "draco/io/file_utils.h"
+
 //
 // List dracodecodefile(CharacterVector x) {
 //   draco::DecoderBuffer buffer;
@@ -98,4 +108,73 @@ List dracodecode(RawVector data, const int index_offset=1) {
   }
 
   return ret;
+}
+
+int EncodeMeshToFile(const draco::Mesh &mesh, const std::string &file,
+                     draco::Encoder *encoder) {
+  // Encode the geometry.
+  draco::EncoderBuffer buffer;
+  /*
+  const draco::Status status = encoder->EncodeMeshToBuffer(mesh, &buffer);
+  if (!status.ok()) {
+    return -1;//List("Failed to encode mesh.");
+  }
+  // Save the encoded geometry into a file.
+  if (!draco::WriteBufferToFile(buffer.data(), buffer.size(), file)) {
+    return -1;//List("Failed to create the output file.");
+  }
+  */
+  return 0;//List("ok")
+}
+
+// [[Rcpp::export]]
+void dracoencode(const NumericVector vertices, const NumericVector faces,
+                 int num_vertices, int num_faces) {
+  // create draco mesh
+  draco::Mesh mesh;
+
+  // add vertices
+  draco::GeometryAttribute va;
+  va.Init(draco::GeometryAttribute::NORMAL, nullptr, 3, draco::DT_FLOAT32, false,
+          sizeof(float) * 3, 0);
+  const int att_id = mesh.AddAttribute(va, true, num_vertices);
+
+  int idx;
+  std::array<float, 3> val;
+  for (draco::PointIndex::ValueType i = 0; i < num_vertices; ++i) {
+    idx = (int) i;
+    val[0] = vertices[3*idx];
+    val[1] = vertices[3*idx+1];
+    val[2] = vertices[3*idx+2];
+    mesh.attribute(att_id)->SetAttributeValue(draco::AttributeValueIndex(i), &val[0]);
+  }
+  //faces
+  std::array<draco::PointIndex, 3> ff;
+  for (int i = 0; i < num_faces; ++i) {
+    ff = {draco::PointIndex(faces[3*i]),
+          draco::PointIndex(faces[3*i+1]),
+          draco::PointIndex(faces[3*i+2])};
+    mesh.AddFace(ff);
+  }
+
+  Rprintf("Creating Draco Mesh Done\n");
+
+  // encode draco mesh
+  draco::Encoder encoder;
+  // so far hardcoded, to be parametrized later
+  int pos_quantization_bits = 11;
+  int compression_level = 2;
+  const int speed = 10 - compression_level;
+  /*
+  std::string output = "out.drc";
+
+  encoder.SetAttributeQuantization(draco::GeometryAttribute::POSITION, pos_quantization_bits);
+  encoder.SetSpeedOptions(speed, speed);
+  int ret;
+  ret = EncodeMeshToFile(mesh, output, &encoder);
+  if (ret != -1)
+    Rprintf("Encoding correct.\n");
+  else
+    Rprintf("Problem with encoding!\n");
+  */
 }

@@ -5,3 +5,11 @@ dracodecode <- function(data, index_offset = 1L) {
     .Call(`_dracor_dracodecode`, data, index_offset)
 }
 
+dracoencode <- function(vertices, faces, num_vertices, num_faces) {
+    invisible(.Call(`_dracor_dracoencode`, vertices, faces, num_vertices, num_faces))
+}
+
+timesTwo <- function(x) {
+    .Call(`_dracor_timesTwo`, x)
+}
+
