@@ -113,3 +113,7 @@ mapply(file.rename, hdirs, sub("prediction_scheme", "ps", hdirs))
 xfun::gsub_file("src/draco/draco_features.h",
                 "(#endif.*DRACO_FEATURES_H_)",
                 "#ifdef __GNUC__\n#if __GNUC__ < 5\n#define DRACO_OLD_GCC\n#endif\n#endif\n\\1")
+
+xfun::gsub_file("src/mesh_edgebreaker_decoder_impl.cc",
+                "const VertexIndex invalid_vert : invalid_vertices",
+                "const VertexIndex& invalid_vert : invalid_vertices")
