@@ -24,6 +24,6 @@ Suggests:
     spelling
 URL: https://github.com/jefferis/dracor, https://github.com/google/draco
 BugReports: https://github.com/jefferis/dracor/issues
-RoxygenNote: 7.1.1
+RoxygenNote: 7.2.3
 Encoding: UTF-8
 Language: en-GB

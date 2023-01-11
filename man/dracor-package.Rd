@@ -6,9 +6,7 @@
 \alias{dracor-package}
 \title{dracor: Decode Draco Format 3D Mesh Data}
 \description{
-Decodes meshes and point cloud data encoded by the Draco mesh
-    compression library from Google. Note that this is only designed for basic
-    decoding and not intended as a full scale wrapping of the Draco library.
+Decodes meshes and point cloud data encoded by the Draco mesh compression library from Google. Note that this is only designed for basic decoding and not intended as a full scale wrapping of the Draco library.
 }
 \seealso{
 Useful links:
