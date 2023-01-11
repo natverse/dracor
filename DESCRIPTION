@@ -1,8 +1,8 @@
 Package: dracor
 Type: Package
 Title: Decode Draco Format 3D Mesh Data
-Version: 0.2.4
-Date: 2020-10-24
+Version: 0.2.5
+Date: 2023-01-11
 Authors@R: c(
     person("Gregory", "Jefferis", 
     email="jefferis@gmail.com", 

@@ -1,3 +1,8 @@
+# dracor 0.2.5
+
+* fix gcc warning on gcc12 due to loop variable copying in draco library
+  (reported by BDR)
+
 # dracor 0.2.4
 
 * fix compilation on gcc11 due to missing #include in draco library
