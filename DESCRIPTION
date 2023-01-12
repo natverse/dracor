@@ -21,7 +21,8 @@ LinkingTo: Rcpp
 Enhances: rgl
 Suggests: 
     testthat,
-    spelling
+    spelling,
+    covr
 URL: https://github.com/jefferis/dracor, https://github.com/google/draco
 BugReports: https://github.com/jefferis/dracor/issues
 RoxygenNote: 7.2.3
