@@ -1,5 +1,9 @@
 ---
-output: github_document
+title: "README"
+author: "Gregory Jefferis"
+output: 
+  html_document: 
+    keep_md: yes
 ---
 
 <!-- README.md is generated from README.Rmd. Please edit that file -->
@@ -11,7 +15,7 @@ knitr::opts_chunk$set(
   fig.path = "man/figures/README-",
   out.width = "100%"
 )
-rgl::setupKnitr()
+rgl::setupKnitr(autoprint = F)
 ```
 
 # dracor
@@ -64,8 +68,8 @@ a range of R packages including [Rvcg](https://cran.r-project.org/package=Rvcg).
 ```{r, webgl=T}
 # install.packages("rgl")
 # convert to rgl mesh3d format
-rgl::shade3d(car.m3d, col='red')
 # set a nice viewpoint
+rgl::shade3d(car.m3d, col='red')
 rgl::view3d(theta = 60, fov=0, zoom=.7)
 ```
 
