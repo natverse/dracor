@@ -11,9 +11,9 @@ Decodes meshes and point cloud data encoded by the Draco mesh compression librar
 \seealso{
 Useful links:
 \itemize{
-  \item \url{https://github.com/jefferis/dracor}
+  \item \url{https://github.com/natverse/dracor}
   \item \url{https://github.com/google/draco}
-  \item Report bugs at \url{https://github.com/jefferis/dracor/issues}
+  \item Report bugs at \url{https://github.com/natverse/dracor/issues}
 }
 
 }
