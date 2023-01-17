@@ -21,11 +21,11 @@ rgl::setupKnitr(autoprint = F)
 # dracor
 
 <!-- badges: start -->
-[![Travis build status](https://travis-ci.com/jefferis/dracor.svg?branch=master)](https://travis-ci.com/jefferis/dracor)
+[![R-CMD-check](https://github.com/natverse/dracor/actions/workflows/R-CMD-check.yaml/badge.svg)](https://github.com/natverse/dracor/actions/workflows/R-CMD-check.yaml)
+[![Codecov test coverage](https://codecov.io/gh/natverse/dracor/branch/master/graph/badge.svg)](https://app.codecov.io/gh/natverse/dracor?branch=master)
+[![GitHub](https://img.shields.io/github/v/release/natverse/dracor)](https://github.com/natverse/dracor/releases/)
 [![CRAN status](https://www.r-pkg.org/badges/version/dracor)](https://CRAN.R-project.org/package=dracor)
-[![GitHub](https://img.shields.io/github/v/release/jefferis/dracor)](https://github.com/jefferis/dracor/releases/)
 [![Downloads](http://cranlogs.r-pkg.org/badges/dracor?color=brightgreen)](https://www.r-pkg.org/pkg/dracor)
-[![Codecov test coverage](https://codecov.io/gh/jefferis/dracor/branch/master/graph/badge.svg)](https://app.codecov.io/gh/jefferis/dracor?branch=master)
 <!-- badges: end -->
 
 The goal of **dracor** is to allow decoding of the Draco compressed meshes in R. 
@@ -46,7 +46,7 @@ install.packages('dracor')
 but you can also install the development version like so:
 
 ```{r, eval=FALSE}
-remotes::install_github("jefferis/dracor")
+remotes::install_github("natverse/dracor")
 ```
 
 ## Example

@@ -23,8 +23,8 @@ Suggests:
     testthat,
     spelling,
     covr
-URL: https://github.com/jefferis/dracor, https://github.com/google/draco
-BugReports: https://github.com/jefferis/dracor/issues
+URL: https://github.com/natverse/dracor, https://github.com/google/draco
+BugReports: https://github.com/natverse/dracor/issues
 RoxygenNote: 7.2.3
 Encoding: UTF-8
 Language: en-GB
