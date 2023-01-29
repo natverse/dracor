@@ -1,6 +1,7 @@
 ## Test environments
 
 * local R installation, R 4.2.2 macosx
+* github actions R 4.2.2 on ubuntu
 * Winbuilder r-devel
 
 https://win-builder.r-project.org/Wv588cep09iA/00check.log
