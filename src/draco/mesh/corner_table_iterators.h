@@ -21,9 +21,15 @@ namespace draco {
 
 // Class for iterating over vertices in a 1-ring around the specified vertex.
 template <class CornerTableT>
-class VertexRingIterator
-    : public std::iterator<std::forward_iterator_tag, VertexIndex> {
+class VertexRingIterator {
  public:
+   // iterator traits
+   using value_type = VertexIndex;
+   using difference_type = std::ptrdiff_t;
+   using pointer = const VertexIndex*;
+   using reference = const VertexIndex&;
+   using iterator_category = std::forward_iterator_tag;
+
   // std::iterator interface requires a default constructor.
   VertexRingIterator()
       : corner_table_(nullptr),
@@ -111,9 +117,15 @@ class VertexRingIterator
 
 // Class for iterating over faces adjacent to the specified input face.
 template <class CornerTableT>
-class FaceAdjacencyIterator
-    : public std::iterator<std::forward_iterator_tag, FaceIndex> {
+class FaceAdjacencyIterator {
  public:
+   // iterator traits
+   using value_type = FaceIndex;
+   using difference_type = std::ptrdiff_t;
+   using pointer = const FaceIndex*;
+   using reference = const FaceIndex&;
+   using iterator_category = std::forward_iterator_tag;
+
   // std::iterator interface requires a default constructor.
   FaceAdjacencyIterator()
       : corner_table_(nullptr),
@@ -193,9 +205,15 @@ class FaceAdjacencyIterator
 
 // Class for iterating over corners attached to a specified vertex.
 template <class CornerTableT = CornerTable>
-class VertexCornersIterator
-    : public std::iterator<std::forward_iterator_tag, CornerIndex> {
+class VertexCornersIterator {
  public:
+   // iterator traits
+   using value_type = CornerIndex;
+   using difference_type = std::ptrdiff_t;
+   using pointer = const CornerIndex*;
+   using reference = const CornerIndex&;
+   using iterator_category = std::forward_iterator_tag;
+
   // std::iterator interface requires a default constructor.
   VertexCornersIterator()
       : corner_table_(nullptr),

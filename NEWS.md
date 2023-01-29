@@ -1,3 +1,8 @@
+# dracor 0.2.6
+
+* fix C++ 17 warning due to deprecation of std::iterator
+  (reported by BDR)
+
 # dracor 0.2.5
 
 * fix gcc warning on gcc12 due to loop variable copying in draco library
