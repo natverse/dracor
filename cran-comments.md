@@ -4,13 +4,13 @@
 * github actions R 4.2.2 on ubuntu
 * Winbuilder r-devel
 
-https://win-builder.r-project.org/Wv588cep09iA/00check.log
+https://win-builder.r-project.org/58fufCiIljMn/00check.log
 
 ## Notes
 
 This update
 
-* fixes warnings with ‘g++ (GCC) 12.2.1 20221121 (Red Hat 12.2.1-4)’ noted by BDR (see https://www.r-project.org/nosvn/R.check/r-devel-linux-x86_64-fedora-gcc/dracor-00check.html)
+* fixes warnings with C++17 noted by BDR due to deprecation of std::iterator
 
 ## R CMD check results
 
